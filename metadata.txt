@@ -2,14 +2,15 @@
 name=LazyGeo
 qgisMinimumVersion=3.16
 qgisMaximumVersion=4.99
-description=Конвертер лицензий Роснедра: Excel координаты → SHP + DXF в ГК ГСК-2011
-version=0.1
+description=Конвертер лицензий Роснедра: Excel координаты ГМС (ГСК-2011) → слой точек и полигон участка в QGIS
+version=0.2
 author=CatSprite-dev
 about=Читает Excel с координатами угловых точек участка недр в формате ГМС (ГСК-2011),
-    конвертирует в проекцию Гаусса-Крюгера, автоматически определяет зону,
-    создаёт слой точек и полигон, сохраняет SHP и DXF рядом с исходным файлом.
+    конвертирует в проекцию Гаусса-Крюгера с автоматическим определением зоны,
+    создаёт слой точек и полигон участка на карте QGIS и добавляет спутниковую подложку.
+    Дальнейший экспорт (SHP, DXF, GeoJSON и др.) выполняется стандартными средствами QGIS.
 category=Vector
-tags=геодезия, лицензия, недра, ГСК-2011, Гаусс-Крюгер, координаты, SHP, DXF
+tags=геодезия, лицензия, недра, ГСК-2011, Гаусс-Крюгер, координаты
 homepage=https://github.com/CatSprite-dev/lazyGeo
 tracker=https://github.com/CatSprite-dev/lazyGeo/issues
 repository=https://github.com/CatSprite-dev/lazyGeo
