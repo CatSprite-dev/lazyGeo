@@ -2,7 +2,7 @@
 name=LazyGeo
 qgisMinimumVersion=3.16
 description=Rosnedra license converter: Excel DMS coordinates (GSK-2011) → point layer and polygon in QGIS
-version=1.0.0
+version=1.0.1
 author=CatSprite-dev
 email=catspriteee@gmail.com
 about=Reads an Excel file with corner point coordinates of a mineral license area in DMS format (GSK-2011),

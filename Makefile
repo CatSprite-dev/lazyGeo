@@ -26,7 +26,7 @@ zip: icon
 	@cp $(PLUGIN_FILES) dist/$(PLUGIN_NAME)/
 	@cp -R libs dist/$(PLUGIN_NAME)/
 	@cp -R img dist/$(PLUGIN_NAME)/
-	@cd dist && zip -r ../$(ZIP_NAME) $(PLUGIN_NAME)/ -x "*/__pycache__/*" -x "*.pyc"
+	@cd dist && zip -r ../$(ZIP_NAME) $(PLUGIN_NAME)/ -x "*/__pycache__/*" -x "*.pyc" -x "*/.DS_Store" -x "*/Thumbs.db"
 	@rm -rf dist/
 	@echo "Готово: $(ZIP_NAME)"
 
