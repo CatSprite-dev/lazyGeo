@@ -12,6 +12,14 @@ from qgis.core import (
 from pyproj import Transformer
 import pandas as pd
 
+# ─── Константы ────────────────────────────────────────────────────────────────
+CRS_SOURCE = "EPSG:7683"    # ГСК-2011
+CRS_GK_BASE = 20900            # база EPSG для зон Гаусса-Крюгера
+GOOGLE_SATELLITE_URL = (
+    "type=xyz&url=https://mt1.google.com/vt/lyrs%3Ds%26x%3D%7Bx%7D%26y%3D%7By%7D%26z%3D%7Bz%7D"
+    "&zmax=20&zmin=0"
+)
+
 
 # ─── Геодезия ─────────────────────────────────────────────────────────────────
 
@@ -41,7 +49,7 @@ def parse_excel(path):
 def convert_to_gk(points):
     avg_lon = sum(p["lon"] for p in points) / len(points)
     zone = int(avg_lon / 6) + 1
-    transformer = Transformer.from_crs("EPSG:7683", f"EPSG:{20900 + zone}", always_xy=True)
+    transformer = Transformer.from_crs(CRS_SOURCE, f"EPSG:{CRS_GK_BASE + zone}", always_xy=True)
     for p in points:
         e, n = transformer.transform(p["lon"], p["lat"])
         p["x"] = round(n, 3)
@@ -179,13 +187,12 @@ class LazyGeoDialog(QDialog):
         self.worker.start()
 
     def _on_success(self, points, zone):
-        epsg = 20900 + zone
+        epsg = CRS_GK_BASE + zone
         crs  = QgsCoordinateReferenceSystem(f"EPSG:{epsg}")
 
         # Создаём проект и подложку только если проект пустой
         if not QgsProject.instance().mapLayers():
-            google_url = "type=xyz&url=https://mt1.google.com/vt/lyrs%3Ds%26x%3D%7Bx%7D%26y%3D%7By%7D%26z%3D%7Bz%7D&zmax=20&zmin=0"
-            basemap = QgsRasterLayer(google_url, "Google Satellite", "wms")
+            basemap = QgsRasterLayer(GOOGLE_SATELLITE_URL, "Google Satellite", "wms")
             if basemap.isValid():
                 QgsProject.instance().addMapLayer(basemap)
             QgsProject.instance().setCrs(crs)
