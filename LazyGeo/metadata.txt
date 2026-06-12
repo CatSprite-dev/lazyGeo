@@ -1,0 +1,20 @@
+[general]
+name=LazyGeo
+qgisMinimumVersion=3.16
+description=Конвертер лицензий Роснедра: Excel координаты ГМС (ГСК-2011) → слой точек и полигон участка в QGIS
+version=1.0.0
+author=CatSprite-dev
+email=catspriteee@gmail.com
+about=Читает Excel с координатами угловых точек участка недр в формате ГМС (ГСК-2011),
+    конвертирует в проекцию Гаусса-Крюгера с автоматическим определением зоны,
+    создаёт слой точек и полигон участка на карте QGIS и добавляет спутниковую подложку.
+    Дальнейший экспорт (SHP, DXF, GeoJSON и др.) выполняется стандартными средствами QGIS.
+category=Vector
+tags=геодезия, лицензия, недра, ГСК-2011, Гаусс-Крюгер, координаты
+homepage=https://github.com/CatSprite-dev/lazyGeo
+tracker=https://github.com/CatSprite-dev/lazyGeo/issues
+repository=https://github.com/CatSprite-dev/lazyGeo
+icon=img/icon.png
+hasProcessingProvider=no
+experimental=False
+deprecated=False
